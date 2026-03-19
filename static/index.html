@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Research Lab (Multi-Agent System)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header / Control Panel -->
+        <header class="control-panel glass-panel">
+            <h1><span class="neon-green">IP LAB</span> // LANGGRAPH SYSTEM</h1>
+            <div class="input-group">
+                <input type="text" id="topicInput" placeholder="Enter research topic (e.g., solid state batteries)...">
+                <input type="password" id="apiKeyInput" placeholder="Gemini API Key (Hardcoded Key Active)" disabled>
+                <button id="runBtn" class="neon-btn">INITIALIZE</button>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-container">
+                <ul class="progress-tracker" id="progressTracker">
+                    <li id="step1" class="step"><span>1</span> Scope Topic</li>
+                    <li id="step2" class="step"><span>2</span> Search Patents</li>
+                    <li id="step3" class="step"><span>3</span> Extract Keywords</li>
+                    <li id="step4" class="step"><span>4</span> WIPO Analysis</li>
+                    <li id="step5" class="step"><span>5</span> Finalize Report</li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Hidden until data loads) -->
+        <main class="results-area" id="resultsArea" style="display: none;">
+
+            <div class="top-row">
+                <div class="sub-domains glass-panel">
+                    <h3>// TARGETED SUB-DOMAINS</h3>
+                    <ul id="subDomainsList"></ul>
+                </div>
+                <div class="export-actions glass-panel">
+                    <h3>// SYSTEM EXPORTS</h3>
+                    <button id="exportPatentsBtn" class="alt-btn">Export Patents (.csv)</button>
+                    <button id="exportKeywordsBtn" class="alt-btn">Export Keywords (.csv)</button>
+                </div>
+            </div>
+
+            <div class="split-view">
+                <!-- Patents Column -->
+                <div class="patents-col glass-panel">
+                    <div class="panel-header">
+                        <h2>PATENT CORPUS</h2>
+                        <span class="badge" id="patentCount">0</span>
+                    </div>
+                    <div class="scroll-list" id="patentsList">
+                        <!-- Patent cards injected here -->
+                    </div>
+                </div>
+
+                <!-- Keywords Column -->
+                <div class="keywords-col glass-panel">
+                    <div class="panel-header">
+                        <h2>KEYWORD CLUSTERS</h2>
+                        <span class="badge" id="keywordCount">0</span>
+                    </div>
+
+                    <div class="tracking-legend">
+                        <span class="legend-item"><span class="dot not-searched"></span> Not Searched</span>
+                        <span class="legend-item"><span class="dot searched"></span> Searched</span>
+                        <span class="legend-item"><span class="dot flagged"></span> Flagged</span>
+                    </div>
+
+                    <div class="scroll-list" id="keywordsList">
+                        <!-- Keyword rows injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
